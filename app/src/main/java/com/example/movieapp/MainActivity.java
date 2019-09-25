@@ -128,8 +128,21 @@ public void onFailure(Call<MoviesResponse> call, Throwable t)
                     Toast.makeText(this, e.toString(). Toast.LENGHT_SHORT).show();
         }
         }
+        @Override
+public boolean onCreateOptionsMenu(Menu menu){
+    getMenuInflater().inflater(R.menu.menu_main);
+    return true;
+        }
 
-
+        @Override
+public boolean onOptionsItemSelected (MenuItem item){
+    switch (item.getItemId()){
+        case R.id.menu_settings;
+        return true;
+        default:
+            return super onOptionItemSelected(item);
+        }
+        }
         }
 
 
