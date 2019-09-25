@@ -67,4 +67,54 @@ public boolean isAdult(){
         return adult;
 }
 
+public void setAdult(boolean adult){
+        this.adult = adult;
 }
+public String getOverview(){
+        return overview;
+}
+
+public void setOverview(String overview){
+        this overview = overview;
+}
+
+    public String getReleaseDate(){
+        return releaseDate;
+    }
+    public String getpopularity(){
+        return popularity;
+    }
+    public void setPopularity (Double popularity){
+        this.popularity = popularity;
+    }
+    public Integer getVoteCount(){
+        return voteCount;
+
+    }
+
+    public void setVotecount(Integer votecount){
+        this voteCount = voteCount;
+    }
+
+    public Boolean getViews(){
+        return video;
+
+    }
+
+    public void setVideos(Boolean videos){
+        this.video = video;
+
+    }
+
+    public Double getVoteAverage(){
+        return releaseDate;
+    }
+
+    public void setVoteAverage (Double voteAverage) {
+        this.voteAverage = voteAverage;
+    }
+}
+
+
+
+

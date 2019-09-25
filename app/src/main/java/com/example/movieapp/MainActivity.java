@@ -1,6 +1,8 @@
 package com.example.movieapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -20,11 +22,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private MoviesAdapter adapter;
+  //  private MovieAxdapter adapter;
     private List<Movie> movieList;
     ProgressDialog pd;
     private SwipeRefreshLayout swipeContainer;
-    public static final String LOG_TAG= MoviesAdapter.class.getName();
+   // public static final String LOG_TAG= MoviesAdapter.class.getName();
 
 
 
@@ -87,6 +89,45 @@ public class MainActivity extends AppCompatActivity {
     loadJSON();
 }}
     private void loadJSON {
+    @Override
+public boolean onCreateOptionMenu(Menu menu)
+        getMenuInflater.inflate(R.menu.menu_main, main )
+        return true;
+
+
+
+        if (BuildConfig.THE_MOVIE_DB_API_TOKEN.isEmpty()){
+            Toast.MakeText(get ApplicationContext()."Please obtain API Key firstly from themoviedb.org",Toast.LENGTH_SHORT).show
+        pd.dismiss();
+            return;
+        }
+
+        Client Client = new Client();
+        Service apiService = Client.getClient().create(Service Class);
+        call<MovieResponse>  call = apiService.getPopularMovies(BuildConfig.THE_MOVIE_DB_API_TOKEN);
+        call.enqueue(new Callback<MoviesResponse>()){
+
+            @Override
+        public void onResponse(Call <MoviesResponse>call, Response<MoviesResponse> response){
+                List<Movie> movies = response. body().getResults();
+                recyclerView.setAdapter(new MoviesAdapter(getApplicationContext(),movies);
+                recyclerview.smoothScrollToPosition(0);
+                if (swipeContainer.isRefreching()){
+                    swipeContainer.setRefreshing(false);
+        }
+                pd.dismiss();
+        }
+        @Override
+public void onFailure(Call<MoviesResponse> call, Throwable t)
+   log.d("Error", t.getMessage());
+            Toast. makeText(MainActivity.this."Error Fetching Data!", Toast.LENGTH_SHORT).show();
+
+        });
+                catch(Exeption e){
+                    log.d("Error",e.getMessage());
+                    Toast.makeText(this, e.toString(). Toast.LENGHT_SHORT).show();
+        }
+        }
 
 
         }
